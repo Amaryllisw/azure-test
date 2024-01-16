@@ -8,13 +8,13 @@ const HOST_NAME = 'amaryllisw.me'
 
 const cert = readFileSync(SSL_PATH + 'cert.crt')
 
-const ca = readFileSync(SSL_PATH + 'ca.crt')
+// const ca = readFileSync(SSL_PATH + 'ca.crt')
 
 const key = readFileSync(SSL_PATH + 'private.key')
 
 const httpsOptions = {
     cert,
-    ca,
+    // ca,
     key
 }
 
@@ -29,9 +29,7 @@ app.use((req, res, next) => {
     next()
 })
 
-app.get('/', (req, res) => {
-    res.send('lalala')
-})
+app.use(express.static('./public'))
 
 const httpServer = http.createServer(app)
 
